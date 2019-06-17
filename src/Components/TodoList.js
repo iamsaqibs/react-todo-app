@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
+import TodoItems from './TodoItems';
 
 
-//TODO: Add code works fine. All we have to do now is to show the list (Video : 21:43)
 class TodoList extends Component {
     constructor (props){
         super(props);
@@ -20,9 +20,11 @@ class TodoList extends Component {
                 key: Date.now(),
             };
 
-            this.setState((prevState)=> {
-                return prevState.item.concat(newItem);
-            })
+            this.setState((prevState) => {
+                return{
+                    items: prevState.items.concat(newItem),
+                };
+            });
 
             this._inputElement.value = '';
 
@@ -41,6 +43,8 @@ class TodoList extends Component {
                         <button type={'submit'}>Add</button>
                     </form>
                 </div>
+
+                <TodoItems entries={this.state.items}/>
             </div>
         );
     }
