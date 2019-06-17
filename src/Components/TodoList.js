@@ -1,12 +1,14 @@
 import React, {Component} from 'react';
 
+
+//TODO: Add code works fine. All we have to do now is to show the list (Video : 21:43)
 class TodoList extends Component {
     constructor (props){
         super(props);
 
         this.state = {
             items: [],
-        }
+        };
 
         this.addItem = this.addItem.bind(this);
     }
@@ -21,6 +23,12 @@ class TodoList extends Component {
             this.setState((prevState)=> {
                 return prevState.item.concat(newItem);
             })
+
+            this._inputElement.value = '';
+
+            console.log(this.state.items);
+
+            e.preventDefault();
         }
     }
 
