@@ -7,6 +7,7 @@
   </a>
 </p>
 </div>
+
 > This is simple todo-app created for practice using ReactJS
 
 ## Install
