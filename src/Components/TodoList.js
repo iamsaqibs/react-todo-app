@@ -2,6 +2,8 @@ import React, {Component} from 'react';
 import TodoItems from './TodoItems';
 
 
+//TODO: Only styling is remaining
+
 class TodoList extends Component {
     constructor (props){
         super(props);
@@ -11,6 +13,20 @@ class TodoList extends Component {
         };
 
         this.addItem = this.addItem.bind(this);
+        this.deleteItems = this.deleteItems.bind(this);
+    }
+
+
+    deleteItems(key){
+        let afterDelete = this.state.items.filter((item)=> {
+            return item.key !== key;
+        });
+
+        this.setState(
+            {
+                items: afterDelete,
+            }
+        )
     }
 
     addItem (e){
@@ -28,7 +44,7 @@ class TodoList extends Component {
 
             this._inputElement.value = '';
 
-            console.log(this.state.items);
+            // console.log(this.state.items);
 
             e.preventDefault();
         }
@@ -44,7 +60,7 @@ class TodoList extends Component {
                     </form>
                 </div>
 
-                <TodoItems entries={this.state.items}/>
+                <TodoItems entries={this.state.items} delete={this.deleteItems}/>
             </div>
         );
     }

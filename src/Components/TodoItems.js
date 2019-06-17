@@ -1,9 +1,26 @@
 import React, {Component} from 'react';
 
 class TodoItems extends Component {
-    createItems(item){
-        return <li key={item.key}>{item.text}</li>
+
+
+    constructor (props) {
+        super(props);
+
+        this.createItems = this.createItems.bind(this);
+        this.deleteItem = this.deleteItem.bind(this);
     }
+
+
+    deleteItem(key){
+        // console.log(key);
+        this.props.delete(key);
+    }
+
+    createItems(item){
+        return <li key={item.key} onClick={ () => this.deleteItem(item.key)}>{item.text}</li>
+    }
+
+
     render() {
         let entries = this.props.entries;
         let listItems = entries.map(this.createItems)
